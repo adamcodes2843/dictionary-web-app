@@ -10,7 +10,7 @@ const WordPhonetic = ({data}) => {
         <h2 className="text-purplish text-lg font-semibold">{data.phonetic}</h2>
       </div>
       <button type="button" >
-      <Image src={play} alt="pronunciation" className="w-12 h-12" />
+      <Image src={play} alt="pronunciation" className="w-12 h-12 rounded-full  hover:bg-purplish after:bg-grayscale-100" />
       </button>
     </div>
   )

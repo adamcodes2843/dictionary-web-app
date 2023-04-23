@@ -3,16 +3,38 @@ import downArrow from '../../dictionary-web-app/starter-code/assets/images/icon-
 import moon from '../../dictionary-web-app/starter-code/assets/images/icon-moon.svg'
 import Image from 'next/image'
 
-const Nav = ({setWord, setDarkMode, setFont, font, darkMode}) => {
+const Nav = ({setDarkMode, setFont, font, darkMode, popUp, setPopUp}) => {
+
+  const popUpFunc = () => {
+    return popUp === 'hidden' ? setPopUp('absolute') : setPopUp('hidden')
+  }
+
+  const sansButton = () => {
+    setFont('sans')
+    setPopUp('hidden')
+  }
+  const serifButton = () => {
+    setFont('serif')
+    setPopUp('hidden')
+  }
+  const monoButton = () => {
+    setFont('mono')
+    setPopUp('hidden')
+  }
 
   return (
     <nav className='w-full flex justify-between'>
         <Image src={logo} alt="logo" />
         <div className="flex items-center justify-between">
-            <button type="button" className="flex items-center justify-around border-r-[1px] border-grayscale-300 pr-4 font-bold">
-            {font = 'sans' ? 'Sans Serif' : font = 'serif' ? 'Serif' : 'Mono'}
-            <Image src={downArrow} alt="font-select" className="ml-3" />
+            <button type="button" onClick={() => popUpFunc()} className="group relative flex items-center justify-around border-r-[1px] border-grayscale-300 px-4 font-bold">
+              {font === 'sans' ? 'Sans Serif' : font === 'serif' ? 'Serif' : 'Mono'}
+              <Image src={downArrow} alt="font-select" className="ml-3" />
             </button>
+            <div className={`${popUp} group-hover:absolute top-16 mt-1 right-36 flex flex-col shadow-lg pr-16 p-4 items-start gap-1 rounded-xl bg-grayscale-100`}>
+              <button type="button" onClick={() => sansButton()}  className={`font-sans hover:text-purplish ${font === 'sans' ? 'font-bold' : ''}`}>Sans Serif</button>
+              <button type="button" onClick={() => serifButton()} className={`font-serif hover:text-purplish ${font === 'serif' ? 'font-bold' : ''}`}>Serif</button>
+              <button type="button" onClick={() => monoButton()} className={`font-mono hover:text-purplish ${font === 'mono' ? 'font-bold' : ''}`}>Mono</button>
+            </div>
             <label className="relative inline-flex items-center cursor-pointer ml-4">
                 <input 
                     type="checkbox" 

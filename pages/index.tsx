@@ -5,6 +5,8 @@ import Nav from './components/Nav'
 import WordPhonetic from './components/WordPhonetic'
 import SearchBar from './components/SearchBar'
 import Meanings from './components/Meanings'
+import Footer from './components/Footer'
+import NoDefinition from './components/NoDefinition'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -16,8 +18,12 @@ export default function Home({}) {
   const [darkMode, setDarkMode] = useState<boolean>(false)
   const [font, setFont] = useState<string>('sans')
   const [textInput, setTextInput] = useState<string>('')
+  const [popUp, setPopUp] = useState<string>('hidden')
+
 
   console.log(data)
+  console.log(word)
+  console.log(textInput)
 
 useEffect(() => {
   fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
@@ -37,10 +43,12 @@ const handleKeyDown = (e: any) => {
   
   return (
     <main className={`flex flex-col items-center justify-between gap-3 font-${font}`}>
-        <Nav setWord={setWord} setDarkMode={setDarkMode} setFont={setFont} font={font} darkMode={darkMode} />
-        <SearchBar handleChange={handleChange} handleKeyDown={handleKeyDown} textInput={textInput} setWord={setWord}/>
+        <Nav setDarkMode={setDarkMode} setFont={setFont} font={font} darkMode={darkMode} popUp={popUp} setPopUp={setPopUp} />
+        <SearchBar handleChange={handleChange} handleKeyDown={handleKeyDown} textInput={textInput} setWord={setWord} word={word} />
         {data && <WordPhonetic data={data} />}
-        {data && <Meanings data={data} />}
+        {data ? <Meanings data={data} setWord={setWord} setTextInput={setTextInput} />
+        : !data && word === '' ? "suh" : <NoDefinition />}
+        {data && <Footer data={data} />}
     </main>
   )
 }

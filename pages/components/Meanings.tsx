@@ -1,7 +1,8 @@
-const Meanings = ({data}) => {
+const Meanings = ({data, setWord, setTextInput}) => {
 
     let meaningsArr = data.meanings
     console.log(meaningsArr)
+
   return (
     <div className="w-full flex flex-col">
         {meaningsArr.map((x:any, i:any) => {
@@ -15,10 +16,32 @@ const Meanings = ({data}) => {
                     <ul className="list-disc marker:text-purplish ml-3">
                         {x.definitions.map((y:any, i:any) => {
                             return (
-                                <li key={i} className='mb-3 pl-3'>{y.definition}</li>
+                                <>
+                                    <li key={i} className='mb-3 pl-3'>{y.definition}</li>
+                                    {y.example && <p className="text-grayscale-400 pl-3 mb-3">"{y.example}"</p>}
+                                </>
                             )
                         })}
                     </ul>
+                    { x.synonyms.length > 0 ? 
+                        <div className="flex w-full mb-4">
+                            <h4 className="text-grayscale-400 mr-6">Synonyms</h4>
+                            <div>
+                            {x.synonyms.map((z:any, i:any) => {
+                                 const newWord = () => {
+                                    setWord(z)
+                                    setTextInput('')
+                                }
+                                return (
+                                    <button key={i} onClick={()=> setWord(()=>newWord())}className="text-purplish font-bold hover:underline mx-2">
+                                        {z}
+                                    </button>
+                                )
+                            })}
+                            </div>
+                        </div> 
+                    : ''
+                    }
                 </div>
              )
             })}
