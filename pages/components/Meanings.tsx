@@ -1,10 +1,9 @@
 const Meanings = ({data, setWord, setTextInput}) => {
 
     let meaningsArr = data.meanings
-    console.log(meaningsArr)
 
   return (
-    <div className="w-full flex flex-col">
+    <div className="w-full flex flex-col mb-auto">
         {meaningsArr.map((x:any, i:any) => {
              return (
                 <div key={i}>

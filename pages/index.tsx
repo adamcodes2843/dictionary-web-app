@@ -23,9 +23,6 @@ export default function Home({}) {
   const [popUp, setPopUp] = useState<string>('hidden')
 
 
-  console.log(data)
-  console.log(theme)
-
 useEffect(() => {
   fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
   .then(response => response.json())
@@ -48,7 +45,9 @@ const toggleTheme = () => {
   
   return (
     <ThemeContext.Provider value={{theme, toggleTheme}}>
-    <main className={`${theme === 'dark' ? 'bg-grayscale-800 text-grayscale-100' : ''} p-8 flex flex-col items-center justify-between gap-3 font-${font} h-min-screen`}>
+    <div className={`2xl:grid 2xl:grid-cols-4 2xl:grid-rows-1 ${theme === 'dark' ? 'bg-grayscale-800' : ''}`}>
+      <div className="2xl:col-span-1"></div>
+    <main className={`${theme === 'dark' ? 'bg-grayscale-800 text-grayscale-100' : ''} p-8 flex flex-col items-center justify-between gap-3 font-${font} min-h-screen 2xl:col-span-2`}>
         <Nav setDarkMode={setDarkMode} setFont={setFont} font={font} darkMode={darkMode} popUp={popUp} setPopUp={setPopUp} toggleTheme={toggleTheme} theme={theme} />
         <SearchBar handleChange={handleChange} handleKeyDown={handleKeyDown} textInput={textInput} setWord={setWord} word={word} theme={theme} />
         {data && <WordPhonetic data={data} />}
@@ -56,6 +55,8 @@ const toggleTheme = () => {
         : !data && word === '' ? "suh" : <NoDefinition />}
         {data && <Footer data={data} />}
     </main>
+      <div className="2xl:col-span-1"></div>
+    </div>
     </ThemeContext.Provider>
   )
 }
