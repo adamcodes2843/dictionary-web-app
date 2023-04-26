@@ -21,12 +21,15 @@ export default function Home({}) {
   const [font, setFont] = useState<string>('sans')
   const [textInput, setTextInput] = useState<string>('')
   const [popUp, setPopUp] = useState<string>('hidden')
+  const [loading, setLoading] = useState<boolean>(true)
 
 
 useEffect(() => {
+  setLoading(true)
   fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
   .then(response => response.json())
   .then(data => setData(data[0]))
+  setLoading(false)
 }, [word])
 
 const handleChange = (e: any) => {
@@ -42,20 +45,20 @@ const handleKeyDown = (e: any) => {
 const toggleTheme = () => {
   setTheme((curr:string) => (curr === 'light' ? 'dark' : 'light'))
 }
-  
+  console.log(textInput)
   return (
     <ThemeContext.Provider value={{theme, toggleTheme}}>
-    <div className={`2xl:grid 2xl:grid-cols-4 2xl:grid-rows-1 ${theme === 'dark' ? 'bg-grayscale-800' : ''}`}>
-      <div className="2xl:col-span-1"></div>
-    <main className={`${theme === 'dark' ? 'bg-grayscale-800 text-grayscale-100' : ''} p-8 flex flex-col items-center justify-between gap-3 font-${font} min-h-screen 2xl:col-span-2`}>
+    <div className={`lg:grid lg:grid-cols-6 lg:grid-rows-1 ${theme === 'dark' ? 'bg-grayscale-800' : ''}`}>
+      <div className="lg:col-span-1"></div>
+    <main className={`${theme === 'dark' ? 'bg-grayscale-800 text-grayscale-100' : ''} p-8 md:py-12 flex flex-col items-center justify-between gap-3 font-${font} min-h-screen lg:col-span-4 md:text-lg`}>
         <Nav setDarkMode={setDarkMode} setFont={setFont} font={font} darkMode={darkMode} popUp={popUp} setPopUp={setPopUp} toggleTheme={toggleTheme} theme={theme} />
         <SearchBar handleChange={handleChange} handleKeyDown={handleKeyDown} textInput={textInput} setWord={setWord} word={word} theme={theme} />
         {data && <WordPhonetic data={data} />}
-        {data ? <Meanings data={data} setWord={setWord} setTextInput={setTextInput} />
-        : !data && word === '' ? "suh" : <NoDefinition />}
+        {data ? <Meanings data={data} setWord={setWord} setTextInput={setTextInput}/> :
+        data === false && loading === false ? <NoDefinition /> : ''}
         {data && <Footer data={data} />}
     </main>
-      <div className="2xl:col-span-1"></div>
+      <div className="lg:col-span-1"></div>
     </div>
     </ThemeContext.Provider>
   )

@@ -17,13 +17,13 @@ const audioList = data.phonetics.filter((x: any)=>{
   }
   
   return (
-    <div className='w-full flex justify-between items-center my-2'>
+    <div className='w-full flex justify-between items-center my-4 mt-2 md:my-6'>
       <div className="flex flex-col ">
-        <h1 className="font-bold text-3xl pb-2">{data.word}</h1>
-        <h2 className="text-purplish text-lg font-semibold">{data.phonetic}</h2>
+        <h1 className="font-bold text-[2.2rem] md:text-[3.5rem] md:py-6">{data.word}</h1>
+        <h2 className="text-purplish text-xl md:text-2xl">{data.phonetic}</h2>
       </div>
         <button type="button" onClick={start}>
-        <Image src={play} alt="pronunciation" className="w-12 h-12 rounded-full hover:fill-grayscale-100"/>
+        <Image src={play} alt="pronunciation" className="w-12 h-12 md:w-16 md:h-16 rounded-full hover:fill-grayscale-100"/>
         </button>
     </div>
   )

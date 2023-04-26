@@ -25,12 +25,12 @@ const Nav = ({setDarkMode, setFont, font, darkMode, popUp, setPopUp, toggleTheme
   return (
     <nav className='w-full flex justify-between'>
         <Image src={logo} alt="logo" />
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between relative">
             <button type="button" onClick={() => popUpFunc()} className="group relative flex items-center justify-around border-r-[1px] border-grayscale-300 px-4 font-bold">
               {font === 'sans' ? 'Sans Serif' : font === 'serif' ? 'Serif' : 'Mono'}
               <Image src={downArrow} alt="font-select" className="ml-3" />
             </button>
-            <div className={`${popUp} ${theme === 'dark' ? 'bg-grayscale-600 shadow-purplish' : ''} shadow-lg group-hover:absolute top-16 mt-1 right-36 flex flex-col  pr-16 p-4 items-start gap-1 rounded-xl bg-grayscale-100`}>
+            <div className={`${popUp} ${theme === 'dark' ? 'bg-grayscale-600 shadow-purplish' : 'shadow-grayscale-300'} shadow-[0_3px_18px] absolute top-10 mt-1 right-28 flex flex-col w-44 p-4 items-start gap-3 rounded-xl bg-grayscale-100`}>
               <button type="button" onClick={() => sansButton()}  className={`font-sans hover:text-purplish ${font === 'sans' ? 'font-bold' : ''}`}>Sans Serif</button>
               <button type="button" onClick={() => serifButton()} className={`font-serif hover:text-purplish ${font === 'serif' ? 'font-bold' : ''}`}>Serif</button>
               <button type="button" onClick={() => monoButton()} className={`font-mono hover:text-purplish ${font === 'mono' ? 'font-bold' : ''}`}>Mono</button>
