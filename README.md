@@ -16,7 +16,7 @@ This is a solution to the [Dictionary web app challenge on Frontend Mentor](http
 
 ## Overview
 
-This is a dictionary app using a free dictionary api. There is a searchbar with form validation, there is a dark mode, font-select dropdown, audio button, and error page. Words, phonetics, meanings, and synonyms are fetched and mapped to the page. It is a next/react app styled with tailwindcss.
+This is a dictionary app using a free dictionary api. There is a searchbar with form validation, there is a dark mode, font-select dropdown, audio button, and error page. Words, phonetics, meanings, and synonyms are fetched and mapped to the page. It is a next/react app styled with tailwindcss. I added an 'enter' keydown function for the searchbar, a home page, and a button in the nav bar to get there, so you know my version of the project is next level.
 
 ### The challenge
 
@@ -42,7 +42,7 @@ Check the screenshot folder
 
 ## My process
 
-Looked through the challenge's checklist and images provided by frontend mentor. Started with the phone version, then tablet, then desktop. I build out the UI using react components from the top of the page down. For each component, I added interactive elements and logic after it was styled. When I bump into a problem, I find a solution on youtube or google. Added an 'enter' keydown function for the searchbar, a home page, and a button in the nav bar to get there, so you know my version of the project is next level.
+Looked through the challenge's checklist and images provided by frontend mentor. Started with the phone version, then tablet, then desktop. I build out the UI using react components from the top of the page down. For each component, I added interactive elements and logic after it was styled. When I bump into a problem, I find a solution on youtube or google.
 
 ### Built with
 
@@ -61,7 +61,7 @@ This project was great practice. I had to use data from an api in many different
 
 ### Continued development
 
-In my upcoming projects i will create a github repo and deploy to vercel right away so I know when something doesn't work in the production build. I want to start using links, dynamic routes, context, ssr, and more Next13 features. I need to spend more time on typescript.
+Need to continue to work on best practices and getting faster with everything. In my upcoming projects i will create a github repo and deploy to vercel right away so I know when something doesn't work in the production build. I want to start using links, dynamic routes, context, ssr, and more Next13 features. I need to spend more time on typescript.
 
 ## Author
 
