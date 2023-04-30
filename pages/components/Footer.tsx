@@ -1,8 +1,9 @@
 import Image from 'next/image'
 import newWindow from '../../dictionary-web-app/starter-code/assets/images/icon-new-window.svg'
 const Footer = ({data}:any | undefined) => {
-    let source:string | undefined = data.sourceUrls[0]
-    console.log(source)
+  
+    let source:string | undefined = data?.sourceUrls?.[0]
+
   return (
     <footer className="flex flex-col md:flex-row border-t-[1px] border-grayscale-300 w-full py-4 mt-6 mb-10 md:mb-16 md:text-base">
         <a href={source} target="_blank" className="text-grayscale-400 md:pr-8">Source</a>

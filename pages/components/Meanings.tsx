@@ -6,11 +6,11 @@ type MeaningProps = {
 
 const Meanings = ({data, setWord, setTextInput}:MeaningProps) => {
     
-    let meaningsArr:any | undefined = data.meanings
+    let meaningsArr:any | undefined = data?.meanings
     
   return (
     <div className="w-full flex flex-col mb-auto">
-        {meaningsArr.map((x:any, i:any) => {
+        {meaningsArr?.map((x:any, i:any) => {
              return (
                 <div key={Math.random()} className="mb-6">
                     <div className="flex items-center w-full">
@@ -19,7 +19,7 @@ const Meanings = ({data, setWord, setTextInput}:MeaningProps) => {
                     </div>
                     <h4 className="my-4 mt-8 md:mt-10 text-grayscale-400">Meaning</h4>
                     <ul className="list-disc marker:text-purplish ml-3 md:ml-9">
-                        {x.definitions.map((y:any, i:number) => {
+                        {x.definitions?.map((y:any, i:number) => {
                             return (
                                 <li key={Math.random()}>
                                     <p className='mb-3 pl-3'>{y.definition}</p>
@@ -32,7 +32,7 @@ const Meanings = ({data, setWord, setTextInput}:MeaningProps) => {
                         <div key={Math.random()} className="flex w-full mt-6 md:my-10">
                             <h4 className="text-grayscale-400 mr-6">Synonyms</h4>
                             <div>
-                            {x.synonyms.map((z:any, i:any) => {
+                            {x.synonyms?.map((z:any, i:any) => {
                                 const newWord = () => {
                                     setWord(z)
                                     setTextInput('')
