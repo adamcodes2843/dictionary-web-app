@@ -15,7 +15,7 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home({}) {
 
   const [theme, setTheme] = useState<any>('light')
-  const [word, setWord] = useState<string>('HomePage')
+  const [word, setWord] = useState<string>('keyboard')
   const [data, setData] = useState<any | null>(null)
   const [font, setFont] = useState<string>('sans')
   const [textInput, setTextInput] = useState<string>('')
