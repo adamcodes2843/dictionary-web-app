@@ -2,7 +2,8 @@ import play from '../../dictionary-web-app/starter-code/assets/images/icon-play.
 import play2 from '../../dictionary-web-app/starter-code/assets/images/icon-play-hover.svg'
 import Image from 'next/image'
 
-const WordPhonetic = ({data, theme}) => {
+
+const WordPhonetic = ({data}:any) => {
 
 const audioList = data.phonetics.filter((x: any)=>{
   if (x.audio !== ''){
