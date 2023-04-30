@@ -1,5 +1,5 @@
 type MeaningProps = {
-    data: any,
+    data: any | undefined,
     setWord: any,
     setTextInput: any
 }

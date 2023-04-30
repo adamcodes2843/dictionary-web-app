@@ -3,7 +3,7 @@ import play2 from '../../dictionary-web-app/starter-code/assets/images/icon-play
 import Image from 'next/image'
 
 
-const WordPhonetic = ({data}:any) => {
+const WordPhonetic = ({data}:any | undefined) => {
 
 const audioList:any | undefined = data.phonetics.filter((x: any)=>{
   if (x.audio !== ''){
