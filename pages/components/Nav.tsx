@@ -4,7 +4,17 @@ import moon from '../../dictionary-web-app/starter-code/assets/images/icon-moon.
 import moon2 from '../../dictionary-web-app/starter-code/assets/images/icon-moon-dark.svg'
 import Image from 'next/image'
 
-const Nav = ({homeButton, setFont, font, popUp, setPopUp, toggleTheme, theme}) => {
+type NavProps = {
+  homeButton: any,
+  setFont: any,
+  font: string,
+  popUp: any,
+  setPopUp: any,
+  toggleTheme: any,
+  theme: string
+}
+
+const Nav = ({homeButton, setFont, font, popUp, setPopUp, toggleTheme, theme}: NavProps) => {
 
   const popUpFunc = () => {
     return popUp === 'hidden' ? setPopUp('absolute') : setPopUp('hidden')
@@ -25,7 +35,7 @@ const Nav = ({homeButton, setFont, font, popUp, setPopUp, toggleTheme, theme}) =
 
   return (
     <nav className='w-full flex justify-between'>
-        <button type="button" onClick={()=>homeButton()}>
+        <button type="button" onClick={()=>homeButton()} >
         <Image src={logo} alt="logo" />
         </button>
         <div className="flex items-center justify-between relative">

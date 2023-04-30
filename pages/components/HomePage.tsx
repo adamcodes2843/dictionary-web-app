@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-const HomePage = ({theme}) => {
+const HomePage = ({theme}:any) => {
   return (
     <div className='md:mt-12 mt-6 text-center mb-auto relative h-72 w-96 md:h-72 flex flex-col justify-between'>
         <h1 className={`text-3xl text-white font-bold`}>Dictionary App</h1>

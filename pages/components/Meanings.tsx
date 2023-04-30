@@ -1,5 +1,10 @@
-const Meanings = ({data, setWord, setTextInput}) => {
+type MeaningProps = {
+    data: any,
+    setWord: any,
+    setTextInput: any
+}
 
+const Meanings = ({data, setWord, setTextInput}:MeaningProps) => {
     
     let meaningsArr = data.meanings
     
@@ -7,7 +12,7 @@ const Meanings = ({data, setWord, setTextInput}) => {
     <div className="w-full flex flex-col mb-auto">
         {meaningsArr.map((x:any, i:any) => {
              return (
-                <div>
+                <div key={`${x.partOfSpeech + i}`}>
                     <div className="flex items-center w-full">
                     <h3 className='font-bold text-xl italic pr-4'>{x.partOfSpeech}</h3>
                     <div className='border-t-[1px] h-[1px] w-full border-grayscale-300' />
@@ -24,7 +29,7 @@ const Meanings = ({data, setWord, setTextInput}) => {
                         })}
                     </ul>
                     { x.synonyms.length > 0 ? 
-                        <div className="flex w-full my-6 md:my-10">
+                        <div key={`synonyms ${i}`} className="flex w-full my-6 md:my-10">
                             <h4 className="text-grayscale-400 mr-6">Synonyms</h4>
                             <div>
                             {x.synonyms.map((z:any, i:any) => {
@@ -33,7 +38,7 @@ const Meanings = ({data, setWord, setTextInput}) => {
                                     setTextInput('')
                                 }
                                 return (
-                                    <button onClick={()=> setWord(()=>newWord())}className="text-purplish font-bold hover:underline mx-2">
+                                    <button key={`syn ${i}`} onClick={()=> setWord(()=>newWord())}className="text-purplish font-bold hover:underline mx-2">
                                         {z}
                                     </button>
                                 )
