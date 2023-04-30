@@ -6,7 +6,7 @@ type MeaningProps = {
 
 const Meanings = ({data, setWord, setTextInput}:MeaningProps) => {
     
-    let meaningsArr = data.meanings
+    let meaningsArr:any | undefined = data.meanings
     
   return (
     <div className="w-full flex flex-col mb-auto">

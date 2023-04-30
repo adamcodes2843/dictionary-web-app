@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 const WordPhonetic = ({data}:any) => {
 
-const audioList = data.phonetics.filter((x: any)=>{
+const audioList:any | undefined = data.phonetics.filter((x: any)=>{
   if (x.audio !== ''){
     return x.audio
   }
