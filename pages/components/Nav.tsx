@@ -1,9 +1,10 @@
 import logo from '../../dictionary-web-app/starter-code/assets/images/logo.svg'
 import downArrow from '../../dictionary-web-app/starter-code/assets/images/icon-arrow-down.svg'
 import moon from '../../dictionary-web-app/starter-code/assets/images/icon-moon.svg'
+import moon2 from '../../dictionary-web-app/starter-code/assets/images/icon-moon-dark.svg'
 import Image from 'next/image'
 
-const Nav = ({setDarkMode, setFont, font, darkMode, popUp, setPopUp, toggleTheme, theme}) => {
+const Nav = ({homeButton, setFont, font, popUp, setPopUp, toggleTheme, theme}) => {
 
   const popUpFunc = () => {
     return popUp === 'hidden' ? setPopUp('absolute') : setPopUp('hidden')
@@ -24,7 +25,9 @@ const Nav = ({setDarkMode, setFont, font, darkMode, popUp, setPopUp, toggleTheme
 
   return (
     <nav className='w-full flex justify-between'>
+        <button type="button" onClick={()=>homeButton()}>
         <Image src={logo} alt="logo" />
+        </button>
         <div className="flex items-center justify-between relative">
             <button type="button" onClick={() => popUpFunc()} className="group relative flex items-center justify-around border-r-[1px] border-grayscale-300 px-4 font-bold">
               {font === 'sans' ? 'Sans Serif' : font === 'serif' ? 'Serif' : 'Mono'}
@@ -43,7 +46,9 @@ const Nav = ({setDarkMode, setFont, font, darkMode, popUp, setPopUp, toggleTheme
                     checked={theme === 'dark' ? true : false}
                 />
                 <div className={`w-10 h-5 hover:bg-purplish peer-focus:outline-none text-grayscale-100 dark:peer-focus:ring-blue-800 rounded-full peer ${theme === 'dark' ? 'bg-purplish' : 'bg-grayscale-400'} peer-checked:after:translate-x-[18px] peer-checked:after:border-white after:content-[''] after:absolute after:top-[3px] after:left-[3px]  after:rounded-full after:h-4 after:w-4 after:border after:transition-all dark:border-gray-600 after:bg-grayscale-100`}></div>
-                <span className="ml-3 text-sm font-medium"><Image src={moon} alt="dark mode toggle" /></span>
+                <span className="ml-3 text-sm font-medium">
+                  {theme === 'dark' ?  <Image src={moon2} alt="dark mode toggle" className="fill-grayscale-100" /> : <Image src={moon} alt="dark mode toggle" className="fill-grayscale-100" />}
+                </span>
             </label>
         </div>
 

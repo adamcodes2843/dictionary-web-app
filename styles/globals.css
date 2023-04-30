@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .clip-logo {
+    clip-path: polygon(50% 0, 85% 25%, 85% 75%, 50% 100%, 15% 75%, 15% 25%);
+  }
+  .clip-inner-logo {
+    clip-path: polygon(50% 0, 85% 25%, 85% 75%, 50% 100%, 15% 75%, 15% 25%);
+  }
+}
